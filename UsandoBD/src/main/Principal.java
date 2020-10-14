@@ -1,13 +1,17 @@
 package main;
 
-import crud.Conectar;
+import conexao.Conectar;
+import crud.Insert;
 
 public class Principal {
 	
 	
 
 	public static void main(String[] args) {
-		Conectar conectar = new Conectar();	
+		Insert gravar = new Insert();
+		
+		gravar.gravar();
+		
 		
 
 	}
