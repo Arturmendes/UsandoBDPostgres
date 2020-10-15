@@ -6,11 +6,10 @@ import conexao.Conectar;
 
 public class Insert {
 	
-	private Connection conexao;
+	private Connection conexao = Conectar.getConnection();
 	
 	public Insert() {
-		Conectar con = new Conectar();
-		conexao = con.getConnection();
+		
 		
 	}
 	

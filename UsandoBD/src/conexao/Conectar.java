@@ -9,7 +9,7 @@ public class Conectar {
 	private String banco = "jdbc:postgresql://127.0.0.1:5432/bd?autoReconnect=true";
 	private String user = "artur";
 	private String password = "2468";
-	private Connection connection = null;
+	private static Connection connection = null;
 	
 	public Conectar() {
 		
@@ -27,14 +27,13 @@ public class Conectar {
 			
 			System.out.println("Erro: " + e.getMessage());
 			//e.printStackTrace();
-		}
-		
-		System.out.println("Conexão ok.");		
+		}	
 		
 		
 	}
 	
-	public Connection getConnection() {
+	public static Connection getConnection() {
+		new Conectar();
 		return connection;
 	}
 		
