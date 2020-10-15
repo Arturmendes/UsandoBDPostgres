@@ -16,7 +16,8 @@ public class ProximoRegistro {
 	
 	public int proximoRegistro() {
 		int retorno = -1;
-		String sql = "select count(*) as qtd from aluno";
+		//String sql = "select count(*) as qtd from aluno";
+		String sql = "SELECT MAX(cod) as qtd FROM aluno";
 		
 		
 		try {
@@ -25,6 +26,8 @@ public class ProximoRegistro {
 			if(result.next()) {
 				retorno = result.getInt("qtd");
 			}			
+			conexao.commit();
+					
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
