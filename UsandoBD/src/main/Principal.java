@@ -1,7 +1,7 @@
 package main;
 
 import conexao.Conectar;
-import crud.Insert;
+import crud.DAO;
 import util.ProximoRegistro;
 
 public class Principal {
@@ -10,7 +10,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		Insert gravar = new Insert();		
+		DAO gravar = new DAO();		
 		gravar.gravar();
 		
 		ProximoRegistro testeProximoRegistro = new ProximoRegistro();

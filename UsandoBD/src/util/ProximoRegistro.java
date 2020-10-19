@@ -15,6 +15,7 @@ public class ProximoRegistro {
 	}
 	
 	public int proximoRegistro() {
+		System.out.println("proximoRegistro conexão: " + conexao);
 		int retorno = -1;
 		//String sql = "select count(*) as qtd from aluno";
 		String sql = "SELECT MAX(cod) as qtd FROM aluno";

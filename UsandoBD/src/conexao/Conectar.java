@@ -11,6 +11,8 @@ public class Conectar {
 	private String password = "2468";
 	private static Connection connection = null;
 	
+	
+	
 	public Conectar() {
 		
 		try {
