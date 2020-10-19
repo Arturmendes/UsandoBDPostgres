@@ -1,6 +1,6 @@
 package main;
 
-import conexao.Conectar;
+
 import crud.DAO;
 import util.ProximoRegistro;
 
