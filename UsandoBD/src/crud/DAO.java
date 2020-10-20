@@ -106,12 +106,127 @@ public class DAO {
 			try {
 				resultado.close();
 				consulta.close();
-				conexao.close();				
+				//conexao.close();				
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 			
 		}
+	}
+	
+	public void consultaGeral() {
+		Statement consulta = null;
+		ResultSet resultado = null;
+		
+		System.out.println("DAO.consultaGeral() conexão: " + conexao);
+
+		String sql = "select * from aluno order by cod";
+
+		try {
+			consulta = conexao.createStatement();
+			resultado = consulta.executeQuery(sql);
+			conexao.commit();	
+			
+			while(resultado.next()) {
+				int cod = resultado.getInt("cod");
+				String nome = resultado.getString("nome");
+				int codCidade = resultado.getInt("codcidade");
+				
+				System.out.println("Cod: " + cod + "\n" + 
+									"Nome: " + nome + "\n" +
+									"CodCidade: " + codCidade + "\n" +
+									"Cidade: " + getNomeCidadeByCod(codCidade) + "\n" +
+									"Estado: " + getEstadoByCod(codCidade) + "\n" +
+									"---------------------------------------------");
+				
+				
+			}
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				resultado.close();
+				consulta.close();
+				//conexao.close();				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		}
+	}
+	
+	private String getNomeCidadeByCod(int codCidade) {
+		
+		Statement consulta = null;
+		ResultSet resultado = null;
+		
+		System.out.println("DAO.getNomeCidadeByCod conexão: " + conexao);
+
+		String sql = "select * from cidade where cod = " + codCidade;
+		
+		try {
+			consulta = conexao.createStatement();
+			resultado = consulta.executeQuery(sql);
+			conexao.commit();	
+			
+			if(resultado.next()) {
+				return resultado.getString("nomeCidade");
+			}
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				resultado.close();
+				consulta.close();
+				//conexao.close();				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		}
+		
+		
+		return null;		
+	}
+	
+private String getEstadoByCod(int codCidade) {
+		
+		Statement consulta = null;
+		ResultSet resultado = null;
+		
+		System.out.println("DAO.getEstadoByCod() conexão: " + conexao);
+
+		String sql = "select * from cidade where cod = " + codCidade;
+		
+		try {
+			consulta = conexao.createStatement();
+			resultado = consulta.executeQuery(sql);
+			conexao.commit();	
+			
+			if(resultado.next()) {
+				return resultado.getString("estado");
+			}
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				resultado.close();
+				consulta.close();
+				//conexao.close();				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+		}
+		
+		
+		return null;		
 	}
 	
 	
